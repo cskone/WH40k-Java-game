@@ -13,8 +13,8 @@ public class PsychicPicker {
 		String[] myPyromancy = {"Fiery Storm", " Fire Shield", "Spontaneous Combustion", "Sunburst", "Inferno", "Moltem Beam"};
 		
 		//Create new hashtable
-		Map <String, Object> disciplines = new HashMap <String, Object>();
-			disciplines.put("bio",	myBiomancy);
+		Map <String, String[]> disciplines = new HashMap <String, String[]>();
+			disciplines.put("bio",	new String[] {"Iron Arm", "Enfeeble", "Life Leech", "Warp Speed", "Endurance", "Haemorrhage"});
 			disciplines.put("div", 	myDivination);
 			disciplines.put("dmn", myDaemonology);
 			disciplines.put("pyr", myPyromancy);
@@ -29,16 +29,19 @@ public class PsychicPicker {
 		System.out.print("Input Discipline choice/s: ");
 		String choice = console.nextLine();
 		String[] discipline = choice.split("\\s+");	//Splits the tokens to read multiple inputs on a line
-			
-		for(String power : discipline)	{
+		
+		for(String power : disciplines.get(choice))	{
+			System.out.println("foo");
 			System.out.println(power);
 			
 			Random result = new Random();	//Creates a new "Random" object
 			int r = result.nextInt(6);	//Sets the # of values (Starting at 0) that can be picked
-			System.out.println(disciplines.get(discipline));
+			
+			System.out.println(discipline[r]);
 			System.out.println(r);
 			
 		}
+		
 		console.close();
 	}
 	/*	HURDLES TO SOLVE:
